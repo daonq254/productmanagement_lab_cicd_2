@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -136,34 +135,34 @@ public class AccountController {
 	}
 
 //		Xóa Account theo id
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<?> deleteProductById(@PathVariable(name = "id") short id) {
-		try {
-//				Thực hiện lấy thông tin chi tiết của Account cần xóa, sau khi xóa xong thực hiện trả về thông tin chi tiết
-//				của Account vừa xóa
-			Account accountDelete = accountService.getAccountByID(id);
-
-//				Convert
-			AccountDto accountDeleteDto = new AccountDto();
-			accountDeleteDto.setId(accountDelete.getId());
-			accountDeleteDto.setEmail(accountDelete.getEmail());
-			accountDeleteDto.setUsername(accountDelete.getUsername());
-			accountDeleteDto.setFullname(accountDelete.getFullname());
-			accountDeleteDto.setAvatarImageName(accountDelete.getAvatarImageName());
-			accountDeleteDto.setMobile(accountDelete.getMobile());
-			accountDeleteDto.setAddress(accountDelete.getAddress());
-			accountDeleteDto.setCreateDate(accountDelete.getCreateDate());
-			accountDeleteDto.setStatus(accountDelete.getStatus().toString());
-
-//				Xóa Product
-			accountService.deleteAccountById(id);
-
-			return new ResponseEntity<>(accountDeleteDto, HttpStatus.OK);
-		} catch (Exception e) {
-
-			return new ResponseEntity<>("Not found", HttpStatus.NOT_FOUND);
-		}
-
-	}
+//	@DeleteMapping(value = "/{id}")
+//	public ResponseEntity<?> deleteAccountById(@PathVariable(name = "id") short id) {
+//		try {
+////				Thực hiện lấy thông tin chi tiết của Account cần xóa, sau khi xóa xong thực hiện trả về thông tin chi tiết
+////				của Account vừa xóa
+//			Account accountDelete = accountService.getAccountByID(id);
+//
+////				Convert
+//			AccountDto accountDeleteDto = new AccountDto();
+//			accountDeleteDto.setId(accountDelete.getId());
+//			accountDeleteDto.setEmail(accountDelete.getEmail());
+//			accountDeleteDto.setUsername(accountDelete.getUsername());
+//			accountDeleteDto.setFullname(accountDelete.getFullname());
+//			accountDeleteDto.setAvatarImageName(accountDelete.getAvatarImageName());
+//			accountDeleteDto.setMobile(accountDelete.getMobile());
+//			accountDeleteDto.setAddress(accountDelete.getAddress());
+//			accountDeleteDto.setCreateDate(accountDelete.getCreateDate());
+//			accountDeleteDto.setStatus(accountDelete.getStatus().toString());
+//
+////				Xóa Product
+//			accountService.deleteAccountById(id);
+//
+//			return new ResponseEntity<>(accountDeleteDto, HttpStatus.OK);
+//		} catch (Exception e) {
+//
+//			return new ResponseEntity<>("Not found", HttpStatus.NOT_FOUND);
+//		}
+//
+//	}
 
 }
