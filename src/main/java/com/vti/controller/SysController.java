@@ -15,7 +15,6 @@ public class SysController {
 	@GetMapping("/status")
 	public ResponseEntity<Object> getStatus() {
 		String msg = "Service is running - " + Instant.now().toString();
-		System.out.println("OK");
 		return ResponseEntity.ok(msg);
 	}
 }
